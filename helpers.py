@@ -47,9 +47,9 @@ def remove_outliers(df,outliers_list):
     return df
 
 
-def clean_dataset(df):
+def clean_dataset(df,cols):
     index_list = []
-    for col in df.columns:
+    for col in df.columns[cols]:
         index_list.extend(get_outlier(df,col))
     #return a new clean dataset
     return remove_outliers(df,index_list)
