@@ -135,3 +135,15 @@ def Prophet_model(data,interval_width = 0.95):
     model.plot_components(prediction)
     
     return model,prediction,future_date
+
+
+def graph_prediction(data,prediction,name):
+    last_date = len(data)
+    plt.figure(figsize=(14,7)) 
+    plt.title('Original data and Predicted values in '+ name + ' Temperature 3 years in the future')
+    plt.plot(data.ds, data.y, 'b',label="Original") # plotting t, b separately 
+    plt.plot(prediction.iloc[last_date:].ds, prediction.iloc[last_date:].yhat, 'g',label="Predicted")
+    plt.xlabel("Date")
+    plt.ylabel("Temperature (°C)")
+    plt.legend(loc="upper left")
+    plt.show()
